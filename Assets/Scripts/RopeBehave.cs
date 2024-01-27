@@ -15,6 +15,8 @@ public class RopeBehave : MonoBehaviour
     private SpringJoint2D SpgJtPl1; 
     private SpringJoint2D SpgJtPl2;
 
+    private float Cldown = 2;
+
     private void Start()
     {
         SpgJtPl1 = Player1.GetComponent<SpringJoint2D>();
@@ -30,6 +32,14 @@ public class RopeBehave : MonoBehaviour
         {
             SpgJtPl1.enabled = true;
             SpgJtPl2.enabled = true;
+
+            StartCoroutine(SprgCldwn());
         }
+    }
+    IEnumerator SprgCldwn()
+    {
+        yield return new WaitForSeconds(Cldown);
+        SpgJtPl1.enabled = false;
+        SpgJtPl2.enabled = false;
     }
 }
