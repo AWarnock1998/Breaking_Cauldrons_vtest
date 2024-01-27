@@ -12,9 +12,13 @@ public class RopeBehave : MonoBehaviour
 
     private float DiffDis;
 
+    private SpringJoint2D SpgJtPl1; 
+    private SpringJoint2D SpgJtPl2;
+
     private void Start()
     {
-        
+        SpgJtPl1 = Player1.GetComponent<SpringJoint2D>();
+        SpgJtPl2 = Player2.GetComponent<SpringJoint2D>();            
     }
     void Update()
     {
@@ -24,7 +28,8 @@ public class RopeBehave : MonoBehaviour
         DiffDis = Vector3.Distance(Player1Pos, Player2Pos);
         if (DiffDis >= 3)
         {
-            Debug.Log("Too Long");
+            SpgJtPl1.enabled = true;
+            SpgJtPl2.enabled = true;
         }
     }
 }
